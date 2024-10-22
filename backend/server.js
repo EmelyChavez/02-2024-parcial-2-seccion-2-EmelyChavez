@@ -1,5 +1,5 @@
 const express = require('express');
-const axios = require('axios');
+const axios = require('axios').default;
 const cors = require('cors');
 const path = require('path');
 
