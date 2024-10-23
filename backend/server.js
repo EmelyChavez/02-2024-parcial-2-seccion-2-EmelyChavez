@@ -1,5 +1,5 @@
 const express = require('express');
-const axios = require('axios').default;
+const axios = require('axios');
 const cors = require('cors');
 const path = require('path');
 
@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const corsOptions = {
-  origin: 'http://localhost:5173', // Ajusta la URL de origen según sea necesario
+  origin: 'http://34.41.213.49', // Ajusta la URL de origen según sea necesario
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 };
@@ -76,6 +76,6 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../listaCompras', 'index.html')); 
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Servidor corriendo en ${PORT}`);
 });

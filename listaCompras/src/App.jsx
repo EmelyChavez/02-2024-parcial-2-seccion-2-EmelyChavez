@@ -17,7 +17,7 @@ function App() {
       const itemToUpdate = items.find((item) => item.id === itemId);
       if (!itemToUpdate) return;
 
-      const response = await fetch(`http://localhost:3000/items/${itemId}`, {
+      const response = await fetch(`http://34.41.213.49:3000/items/${itemId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ function App() {
   // eliminar producto por ID y conectarlo con el backend
   const handleDeleteItem = async (itemId) => {
     try {
-      const response = await fetch(`http://localhost:3000/items/${itemId}`, {
+      const response = await fetch(`http://34.41.213.49:3000/items/${itemId}`, {
         method: 'DELETE',
       });
 
@@ -60,7 +60,7 @@ function App() {
 
   const fetchItemsFromBackend = async () => {
     try {
-      const response = await fetch('http://localhost:3000/items');
+      const response = await fetch('http://34.41.213.49:3000/items');
       const data = await response.json();
       setItems(data); 
     } catch (error) {
@@ -84,6 +84,12 @@ function App() {
   useEffect(() => {
     loadSavedItems();
     fetchItemsFromBackend();
+    const reload = setInterval (() =>{
+      fetchItemsFromBackend();
+    }, 1000);
+
+    return () => clearInterval(reload);
+
   }, []);
 
   return (

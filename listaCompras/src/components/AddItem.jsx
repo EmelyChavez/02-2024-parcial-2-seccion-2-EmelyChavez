@@ -9,7 +9,7 @@ const AddItem = ({ handleAddList }) => {
     e.preventDefault();
     if (name.trim()) {
       try {
-        const response = await axios.post('http://localhost:3000/items', { id: name.trim() });
+        const response = await axios.post('http://34.41.213.49:3000/items', { id: name.trim() });
         handleAddList(response.data); 
         setName(""); 
         setError(""); 
